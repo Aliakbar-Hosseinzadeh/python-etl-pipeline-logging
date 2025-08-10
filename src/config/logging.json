@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+
+  "formatters": {
+    "console": { "format": "%(levelname)s: %(message)s" },
+    "json": {
+      "()": "config.logging_utils.JsonFormatter",
+      "fmt_keys": {
+        "level": "levelname",
+        "message": "message",
+        "timestamp": "timestamp",
+        "logger": "name",
+        "module": "module",
+        "function": "funcName",
+        "line": "lineno",
+        "thread_name": "threadName"
+      }
+    }
+  },
+
+  "filters": {
+    "non_error": { "()": "config.logging_utils.NonErrorFilter" }
+  },
+
+  "handlers": {
+    "stdout": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "console",
+      "filters": ["non_error"],
+      "stream": "ext://sys.stdout"
+    },
+    "stderr": {
+      "class": "logging.StreamHandler",
+      "level": "ERROR",
+      "formatter": "console",
+      "stream": "ext://sys.stderr"
+    },
+    "file_all": {
+      "class": "config.logging_utils.SafeRotatingFileHandler",
+      "level": "DEBUG",
+      "formatter": "json",
+      "filename": "logs/etl-pipeline.log.jsonl",
+      "maxBytes": 10000000,
+      "backupCount": 10,
+      "encoding": "utf-8",
+      "delay": true
+    }
+  },
+
+  "root": {
+    "level": "DEBUG",
+    "handlers": ["stdout", "stderr", "file_all"]
+  }
+}
