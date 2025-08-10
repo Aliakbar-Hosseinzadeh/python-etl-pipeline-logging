@@ -5,7 +5,7 @@ A production-ready logging starter for Python ETL jobs. It cleanly splits consol
 
 ## Papar Information
 - Title:  `ETL Pipeline logging`
-- Full-preprint: [ETL/ELT Pipeline Project Structure: Best Practices](https://medium.com/@aliakbarhosseinzadeh/structuring-an-etl-pipeline-project-best-practices-5ed1e4d5a601)
+- [From Print to Production: Best Practices for Python Logging](https://medium.com/@aliakbarhosseinzadeh/from-print-to-production-best-practices-for-python-logging-c4e8de2fa665)
 
 ## Install & Dependence
 - python
